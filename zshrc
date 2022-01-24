@@ -97,7 +97,7 @@ alias gg='git grep'
 alias gb='git branch'
 alias gfo='git fetch origin'
 alias gpm='git pull origin master'
-alias gpc='git rev-parse --abbrev-ref HEAD | git pull origin' 
+alias gpc='git rev-parse --abbrev-ref HEAD | git pull origin'
 alias -g B='`git branch -a | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
 
 alias gr='greplace'
@@ -148,14 +148,6 @@ alias docker-date-sync='docker run --rm --privileged alpine hwclock -s'
 
 alias rn='react-native'
 
-alias le='lerna'
-alias lea='le add'
-alias leb='le bootstrap'
-alias lec='le clean'
-
-# Hub
-# eval "$(hub alias -s)"
-
 #---------------------------------------------------------------------------
 # Others
 #---------------------------------------------------------------------------
@@ -195,64 +187,43 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
-function peco-ghq-list() {
-  cd $(ghq root)/$(ghq list | peco)
-}
-zle -N peco-ghq-list
-bindkey '^g' peco-ghq-list
-
-# if [ -d $HOME/.anyenv  ] ; then
-  # PATH=$HOME/.anyenv/bin:$PATH
-  # export PATH
-  # eval "$(anyenv init -)"
-# fi
+if [ -d $HOME/.anyenv  ] ; then
+  PATH=$HOME/.anyenv/bin:$PATH
+  export PATH
+  eval "$(anyenv init -)"
+fi
 if [ -d $HOME/.rbenv  ] ; then
   PATH=$HOME/.rbenv/bin:$PATH
   export PATH
   eval "$(rbenv init -)"
 fi
 
-# export GOPATH=$HOME/go
-# export GOENV_ROOT=$HOME/.goenv
-# export PATH=bin:$GOENV_ROOT/bin:$GOPATH/bin:$PATH
-# eval "$(goenv init -)"
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
+export PATH=/usr/local/bin:$PATH
 export PATH="/usr/local/heroku/bin:$PATH"
+
 
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 export PATH=${PATH}:${ANDROID_HOME}/tools
-export PATH=${PATH}:${ANDROID_HOME}/emulator
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools
-export PATH=${PATH}:${HOME}/.fastlane/bin
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-
-function vmfavrica() {
-  cd ~/Vagrants/favrica > /dev/null
-  ps aux | grep VBoxHeadless | grep favrica -q || vagrant up
-  vagrant ssh
-}
 
 function git-init() {
   git init
   git commit -m"Initial commit" --allow-empty
 }
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# Direnv
-# eval "$(direnv hook zsh)"
-
+# dip
+eval "$(dip console)"
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/unosk/.nodebrew/node/v8.7.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/unosk/.nodebrew/node/v8.7.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/unosk/.nodebrew/node/v8.7.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/unosk/.nodebrew/node/v8.7.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
-
-
-
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /Users/unosk/.nodebrew/node/v10.11.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/unosk/.nodebrew/node/v10.11.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
