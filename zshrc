@@ -154,7 +154,7 @@ alias leb='le bootstrap'
 alias lec='le clean'
 
 # Hub
-eval "$(hub alias -s)"
+# eval "$(hub alias -s)"
 
 #---------------------------------------------------------------------------
 # Others
@@ -212,10 +212,10 @@ if [ -d $HOME/.rbenv  ] ; then
   eval "$(rbenv init -)"
 fi
 
-export GOPATH=$HOME/go
-export GOENV_ROOT=$HOME/.goenv
-export PATH=bin:$GOENV_ROOT/bin:$GOPATH/bin:$PATH
-eval "$(goenv init -)"
+# export GOPATH=$HOME/go
+# export GOENV_ROOT=$HOME/.goenv
+# export PATH=bin:$GOENV_ROOT/bin:$GOPATH/bin:$PATH
+# eval "$(goenv init -)"
 
 export PATH="/usr/local/heroku/bin:$PATH"
 
@@ -241,7 +241,7 @@ function git-init() {
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Direnv
-eval "$(direnv hook zsh)"
+# eval "$(direnv hook zsh)"
 
 
 # tabtab source for serverless package

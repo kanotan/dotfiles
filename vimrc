@@ -11,7 +11,6 @@ if has('vim_starting')
 endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 
-
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc', {
   \   'build' : {
@@ -124,7 +123,7 @@ set smartcase
 set wrapscan
 
 " Color
-set t_Co=256
+set background=dark
 colorscheme hybrid
 
 " 移動を直感的に
@@ -189,7 +188,7 @@ imap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
 cmap <silent> <C-e> <C-u>:NERDTreeToggle<CR>
 
 " ファイル指定なしで起動するとNERDTreeを開いた状態から始める
-" autocmd vimenter * if !argc() | NERDTree | endif
+autocmd vimenter * if !argc() | NERDTree | endif
 
 " NERD Commenter
 let NERDSpaceDelims = 1
